@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
+import Image from "./Image";
 
 // ── Flin's avatar SVG ─────────────────────────────────────────
 export function FlinAvatar({ size = 32 }) {
@@ -239,6 +240,7 @@ export default function ChatWindow() {
           role: "assistant",
           content: data.reply,
           stockData: data.stockData ?? null,
+          imageUrl: data.imageUrl ?? null, 
           timestamp: new Date(),
         },
       ]);
