@@ -8,7 +8,7 @@ import { extractTickers, getStockData, formatStockContext } from "@/lib/stockApi
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { message, history } = body;
+    const { message, history, userName } = body;
 
     // Validate input
     if (!message || typeof message !== "string") {
@@ -38,7 +38,7 @@ for (const ticker of tickers) {
 const firstStock = stockData[0] ?? null;
 
 // ── Step 3: Ask Flin (Gemini) with full history + stock context ─────
-const reply = await askFlin(message, history, stockContext || undefined);
+const reply = await askFlin(message, history, stockContext, userName || undefined);
 
 // ── Step 4: Return Flin's reply and any stock data ────────────
 return NextResponse.json({ reply, stockData: firstStock });

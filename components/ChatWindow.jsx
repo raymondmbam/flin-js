@@ -226,7 +226,7 @@ export default function ChatWindow() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userText, history }),
+        body: JSON.stringify({ message: userText, history, userName }),
       });
 
       if (!res.ok) throw new Error(`API error: ${res.status}`);
